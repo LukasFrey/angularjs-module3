@@ -1,4 +1,18 @@
-<ul ng-if="list.found.length > 0">
-    <li ng-repeat="item in list.found">{{ item.description }}</li>
-    <button ng-click="onRemove({index: $index});">Remove Item</button>
+<ul ng-if="$ctrl.list.length > 0">
+    <li ng-repeat="item in $ctrl.list">
+        <div>
+            {{ item.description }} 
+            <button ng-click="$ctrl.remove($index);">Don't want this one!</button>
+        </div>
+    </li>
 </ul>
+
+<div ng-if="$ctrl.list.length == 0" class="bg-danger">
+    <h4>The list is empty. This can have several reasons:</h4>
+    <ul>
+        <li>Nothing found</li>
+        <li>All items removed</li>
+        <li>Not yet searched</li>
+        <li>No search term entered</li>
+    </ul>
+</div>
